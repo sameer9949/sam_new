@@ -12,10 +12,10 @@ Business rules should not directly depend on databases, EF Core, Redis, RabbitMQ
 
 ```text
 src/
-├── CleanArchitectureDemo.Api
-├── CleanArchitectureDemo.Application
-├── CleanArchitectureDemo.Domain
-└── CleanArchitectureDemo.Infrastructure
+|-- CleanArchitectureDemo.Api
+|-- CleanArchitectureDemo.Application
+|-- CleanArchitectureDemo.Domain
+`-- CleanArchitectureDemo.Infrastructure
 ```
 
 ### API Layer
@@ -73,15 +73,20 @@ Memory line: Infrastructure is replaceable.
 
 ```text
 Controller
-   ↓
+   |
+   v
 Service
-   ↓
+   |
+   v
 Repository Interface
-   ↓
+   |
+   v
 Repository Implementation
-   ↓
+   |
+   v
 DbContext
-   ↓
+   |
+   v
 Database
 ```
 
@@ -89,15 +94,20 @@ Example:
 
 ```text
 ProductsController
-   ↓
+   |
+   v
 ProductService
-   ↓
+   |
+   v
 IProductRepository
-   ↓
+   |
+   v
 ProductRepository
-   ↓
+   |
+   v
 AppDbContext
-   ↓
+   |
+   v
 Database
 ```
 
@@ -115,11 +125,11 @@ API depends on Application.
 Current project references:
 
 ```text
-CleanArchitectureDemo.Api → CleanArchitectureDemo.Application
-CleanArchitectureDemo.Application → CleanArchitectureDemo.Domain
-CleanArchitectureDemo.Infrastructure → CleanArchitectureDemo.Application
-CleanArchitectureDemo.Infrastructure → CleanArchitectureDemo.Domain
-CleanArchitectureDemo.Domain → nobody
+CleanArchitectureDemo.Api -> CleanArchitectureDemo.Application
+CleanArchitectureDemo.Application -> CleanArchitectureDemo.Domain
+CleanArchitectureDemo.Infrastructure -> CleanArchitectureDemo.Application
+CleanArchitectureDemo.Infrastructure -> CleanArchitectureDemo.Domain
+CleanArchitectureDemo.Domain -> nobody
 ```
 
 ## Day 1 Goal
@@ -127,7 +137,7 @@ CleanArchitectureDemo.Domain → nobody
 Understand the basic flow:
 
 ```text
-Controller → Service → Repository Interface → Repository Implementation → DbContext → Database
+Controller -> Service -> Repository Interface -> Repository Implementation -> DbContext -> Database
 ```
 
 For now, this repository does not include EF Core or a database. It only contains the starter solution structure and learning notes.

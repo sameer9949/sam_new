@@ -17,17 +17,23 @@ Technical details:
 
 ```text
 HTTP Request
-   ↓
+   |
+   v
 ProductsController      API Layer
-   ↓
+   |
+   v
 ProductService          Application Layer
-   ↓
+   |
+   v
 IProductRepository      Application Interface
-   ↓
+   |
+   v
 ProductRepository       Infrastructure Layer
-   ↓
+   |
+   v
 AppDbContext            Infrastructure Layer
-   ↓
+   |
+   v
 Database
 ```
 
@@ -111,9 +117,9 @@ Example DTO: CreateProductRequest.
 ## Dependency Rule
 
 ```text
-API → Application → Domain
+API -> Application -> Domain
 
-Infrastructure → Application → Domain
+Infrastructure -> Application -> Domain
 
 Domain depends on nobody.
 ```
